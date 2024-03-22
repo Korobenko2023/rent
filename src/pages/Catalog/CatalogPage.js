@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "redux/contacts/operations";
 import { selectContacts, selectError, selectIsLoading } from "redux/contacts/selectors";
-import { ContactsTitle } from "./Contacts.styled";
+import { ContactsTitle } from "./CatalogPage.styled";
 
 export default function Contacts() {
   const dispatch = useDispatch();

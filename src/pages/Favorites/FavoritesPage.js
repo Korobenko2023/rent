@@ -1,5 +1,5 @@
 import { LoginForm } from "components/LoginForm/LoginForm";
-import { LoginTitle } from "./Login.styled";
+import { LoginTitle } from "./FavoritesPage.styled";
 
 export default function Login() {
     return (
