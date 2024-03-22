@@ -18,7 +18,7 @@ body {
   letter-spacing: 0.02em;
   line-height: 1.3;
   font-size: 16px;
-  background: url('image/garden.jpg');
+  background: url('image/camper.png');
   background-position: top;
   background-size: cover; 
   
