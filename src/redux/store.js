@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import { autosReducer } from "./autos/autosSlice";
 import persistStore from "redux-persist/es/persistStore";
-import storage from 'redux-persist/lib/storage';
+
 import {
     FLUSH,
     REHYDRATE,
@@ -11,18 +11,10 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import persistReducer from "redux-persist/es/persistReducer";
-
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
-
 
 export const store = configureStore({
     reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
+        auth: authReducer,
         autos: autosReducer,
     },
     middleware: (getDefaultMiddleware) =>

@@ -17,6 +17,7 @@ const autosSlice = createSlice({
    visibleItems: [],
    currentPage: 1,
    totalPages: 1,
+   favorites: [],
    isLoading: false,
    error: null,
    },
@@ -26,6 +27,18 @@ const autosSlice = createSlice({
         state.currentPage += 1;
         state.visibleItems = state.autosItems.slice(0, state.currentPage * 4);
       }
+     },
+      updateFavorites(state, action) {
+      state.favorites = action.payload;
+    },
+      addFavorites(state, action) {
+      state.favorites.push(action.payload);
+    },
+
+      removeFavorites(state, action) {
+      state.favorites = state.favorites.filter(
+        (camper) => camper.id !== action.payload.id
+      );
     },
   },
    extraReducers: builder => {
@@ -43,4 +56,4 @@ const autosSlice = createSlice({
 });
 
 export const autosReducer = autosSlice.reducer;
-export const { updateCurrentPage } = autosSlice.actions;
+export const { updateCurrentPage, updateFavorites, addFavorites, removeFavorites } = autosSlice.actions;
