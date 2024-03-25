@@ -1,105 +1,37 @@
 import { Loader } from "components/Loader/Loader";
-import { useEffect } from "react";
-// import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPage } from "redux/autos/autosSlice";
+import { selectAutos, selectIsLoading, selectError } from "redux/autos/selectors";
 import { fetchAutos } from "redux/autos/operations";
-import { selectAutos, selectCurrentPage, selectIsLoading } from "redux/autos/selectors";
-// import { AutosUl, CatalogDiv, LoadMoreButton } from "./CatalogPage.styled";
-import { AutoCard } from "components/AutoCard/AutoCard";
+import { AutosList } from "components/AutosList/AutosList";
+import { CatalogDiv, Wrapper } from "./CatalogPage.styled";
 
-const CatalogPage = () => {
-  const dispatch = useDispatch();
-  const currentPage = useSelector(selectCurrentPage);
-  const autosItems = useSelector(selectAutos);
-  // const visibleItems = useSelector(selectVisibleItems);
+export default function CatalogPage() {
+  const dispatch = useDispatch();  
+  const autos = useSelector(selectAutos);
   const isLoading = useSelector(selectIsLoading);
-  // const isVisibleButton = visibleItems.length !== catalogItems.length;
-  const isVisibleButton = autosItems.length % 4 === 0;
-
-  // let filteredCampers = useSelector(selectFilteredCampers);
-
+  const error = useSelector(selectError);
+  const [page, setPage] = useState(1);
+ 
   useEffect(() => {
-    dispatch(fetchAutos(currentPage));
-  }, [dispatch, currentPage]);
+    dispatch(fetchAutos(page));
+  }, [dispatch, page]);
+
+  const handleLoadMore = () => {
+    setPage((prevPage) => (prevPage += 1));
+  };
 
   return (
-    <div>
-      <h1>Catalog</h1>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div>
-          {/* <Aside /> */}
-          <div>
-            <ul>
-              {autosItems.length !== 0 &&
-                autosItems.map((item) => (
-                  <AutoCard key={item.id} camper={item} />
-                ))}
-            </ul>
-            {/* <ul>
-              {filteredCampers.length !== 0 &&
-                filteredCampers.map((item) => (
-                  <CamperCard key={item.id} camper={item} />
-                ))}
-            </ul> */}
-
-            {/* <ul>
-              {visibleItems.length !== 0 &&
-                visibleItems.map((item) => (
-                  <CamperCard key={item.id} camper={item} />
-                ))}
-            </ul> */}
-
-            {isVisibleButton && (
-              <button
-                type="button"
-                onClick={() => dispatch(updateCurrentPage())}
-              >
-                Load more
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+     <CatalogDiv>
+      <Wrapper>
+        {isLoading && !error && <Loader />}
+        {error && (toast.error('Oops! Something went wrong. Please try again later.'))}
+        {/* <SideBar /> */}
+        {autos.length > 0 ? (            
+            <AutosList autos={autos} buttonMore={handleLoadMore} />
+          ) : null}
+        </Wrapper>
+    </CatalogDiv>
+    );
 };
-
-export default CatalogPage;
-
-// export default function CatalogPage() {
-//   const dispatch = useDispatch();
-//   // const isLoading = useSelector(selectIsLoading);
-//   // const error = useSelector(selectError);
-//   const autos = useSelector(selectAutos);
-//   const currentPage = useSelector(selectCurrentPage);
-//   const visibleItems = useSelector(selectVisible);
-//   const isVisibleButton = visibleItems.length !== autos.length;
-
-//   useEffect(() => {
-//     dispatch(fetchAutos(currentPage));
-//   }, [dispatch, currentPage]);
-
-//   return ( 
-//     <CatalogDiv>
-//       <div>Catalog</div>
-//        {/* {isLoading && !error && <Loader />}
-//        {error && (toast.error('Oops! Something went wrong. Please try again later.'))} */}
-//       <AutosUl>
-//         {visibleItems.length !== 0 && visibleItems.map((item) => (
-//           <AutoCard key={item.id} auto={item} /> 
-//         ))}
-//       </AutosUl>
-//       {isVisibleButton && (
-//         <LoadMoreButton
-//           type="button"
-//           onClick={() => dispatch(updateCurrentPage())}
-//         >
-//           Load more
-//         </LoadMoreButton>
-//       )}
-//     </CatalogDiv>
-//   );
-// }

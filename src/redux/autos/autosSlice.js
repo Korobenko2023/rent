@@ -3,57 +3,40 @@ import { fetchAutos } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
+  state.message = null;
 };
 
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
+  state.message = null;
 };
 
 const autosSlice = createSlice({
    name: 'autos',  
    initialState: {
-   autosItems: [],
-   visibleItems: [],
-   currentPage: 1,
-   totalPages: 1,
-   favorites: [],
-   isLoading: false,
-   error: null,
+    items: [],
+    isLoading: false,
+    error: null,
+    message: null,
    },
-   reducers: {
-    updateCurrentPage(state) {
-      if (state.currentPage < state.totalPages) {
-        state.currentPage += 1;
-        state.visibleItems = state.autosItems.slice(0, state.currentPage * 4);
-      }
-     },
-      updateFavorites(state, action) {
-      state.favorites = action.payload;
-    },
-      addFavorites(state, action) {
-      state.favorites.push(action.payload);
-    },
-
-      removeFavorites(state, action) {
-      state.favorites = state.favorites.filter(
-        (camper) => camper.id !== action.payload.id
-      );
-    },
-  },
    extraReducers: builder => {
       builder
          .addCase(fetchAutos.pending, handlePending)
          .addCase(fetchAutos.fulfilled, (state, { payload }) => {
-            state.isLoading = false;
-            state.error = null;
-            state.autosItems = payload;
-            state.totalPages = Math.ceil(state.autosItems.length / 4);
-            state.visibleItems = state.autosItems.slice(0, state.currentPage * 4);
+           state.isLoading = false;
+           state.error = null;
+           if (payload.length === 0) {
+             state.message = 'Oops! No more autos.';
+           }
+           const toCheck = state.items.map((item) => item._id);
+           const filteredItems = payload.filter(
+           (item) => !toCheck.includes(item._id)
+           );
+           state.items = [...state.items, ...filteredItems];
          })
          .addCase(fetchAutos.rejected, handleRejected)
    }, 
 });
 
 export const autosReducer = autosSlice.reducer;
-export const { updateCurrentPage, updateFavorites, addFavorites, removeFavorites } = autosSlice.actions;

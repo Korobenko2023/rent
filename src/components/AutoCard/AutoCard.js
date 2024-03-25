@@ -1,115 +1,95 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-// import { CamperDetails } from '../CamperDetails/CamperDetails';
+import { selectFavorites } from 'redux/autos/selectors';
+import sprite from '../../public/sprite.svg';
 import { Modal } from '../Modal/Modal';
-import { useDispatch } from 'react-redux';
-import { updateFavorites } from '../../redux/autos/autosSlice';
-import { AutoDescription, AutoImg, AutoSubtitleDiv, AutoSubtitleText, AutoTitle, AutoTitleDiv, ButtonFavorite, CardLi, PriceDiv, ShowMoreButton, SubtitleDiv } from './AutoCard.styled';
+
+import {
+  AutoImg,
+  AutoSubtitleDiv,
+  AutoSubtitleText,
+  AutoTitle,
+  AutoTitleDiv,
+  ButtonFavorite,
+  CardDiv,
+  Description,
+  IconMap,
+  IconStar,
+  IconSvg,
+  PriceDiv,
+  ShowMoreButton,
+  SubtitleDiv
+} from './AutoCard.styled';
+import { addFavorites, removeFavorites } from 'redux/autos/favoritesSlice';
 
 export const AutoCard = ({ auto }) => {
-  const dispatch = useDispatch();
-  const [isFavorite, setIsFavorite] = useState(checkFavorite(auto) || false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const { name, price, rating, reviews, location, description, gallery } = auto;
+    const dispatch = useDispatch();
+    const [isFavorite, setIsFavorite] = useState(false);
+    const favorites = useSelector(selectFavorites);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const formatPrice = price.toFixed(2);
 
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
-    if (storedFavorites !== null && storedFavorites !== undefined) {
-      dispatch(updateFavorites(storedFavorites));
-    }
-  }, [dispatch]);
+    useEffect(() => {
+        setIsFavorite(favorites.some((f) => f._id === auto._id));
+    }, [favorites, auto._id]);
     
+     const handleClick = () => {
+        setIsFavorite(!isFavorite);
+        if (!isFavorite) {
+            dispatch(addFavorites(auto));
+        } else {
+            dispatch(removeFavorites(auto._id));
+        }
+    };
     
-
-  function checkFavorite(auto) {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (Array.isArray(storedFavorites)) {
-      return storedFavorites.some((favorite) => favorite.id === auto.id);
-    }
-    return false;
-  }
-  const openModal = () => {
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    document.body.style.overflow = '';
-  };
-
-  const addToFavorites = (auto) => {
-    let storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (!Array.isArray(storedFavorites)) {
-      storedFavorites = [];
-    }
-    const updatedFavorites = [...storedFavorites, auto];
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    setIsFavorite(true);
-    if (storedFavorites.length > 0) {
-      dispatch(updateFavorites(updatedFavorites));
-    }
-  };
-
-  const removeFromFavorites = (auto) => {
-    let storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const updatedFavorites = storedFavorites.filter(
-      (favorite) => favorite.id !== auto.id
+    return (      
+        <CardDiv>
+            <div>
+                <AutoImg src={gallery[0]} alt={name} />
+            </div>
+            <div>
+                <AutoTitleDiv>
+                    <AutoTitle>{name}</AutoTitle>
+                    <PriceDiv>
+                        <AutoTitle>€{formatPrice}</AutoTitle>
+                        <ButtonFavorite type="button" onClick={handleClick} >  
+                            <IconSvg>
+                                <use href={`${sprite}#iconHeart`} />                               
+                           </IconSvg>        
+                        </ButtonFavorite>
+                    </PriceDiv>
+                </AutoTitleDiv>
+                <AutoSubtitleDiv>
+                    <SubtitleDiv>
+                        <AutoSubtitleText >
+                            <IconStar>
+                                <use href={`${sprite}#star`} />
+                            </IconStar>
+                            {`${rating}(${reviews.length} Reviews)`}</AutoSubtitleText>
+                    </SubtitleDiv>
+                    <SubtitleDiv>
+                        <AutoSubtitleText>
+                            <IconMap>
+                                <use href={`${sprite}#map`} />
+                            </IconMap>
+                            {location}
+                        </AutoSubtitleText>
+                    </SubtitleDiv>                    
+                </AutoSubtitleDiv>
+                <Description>{description}</Description>
+                <ShowMoreButton type="button" onClick={() => setIsModalOpen(true)}>
+                    Show more
+                </ShowMoreButton>
+            </div>
+            {isModalOpen && (
+                <Modal
+                    key={auto._id}
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    auto={auto}
+                />
+            )}
+        </CardDiv>
     );
-
-    if (updatedFavorites.length === 0) {
-      localStorage.removeItem('favorites');
-      dispatch(updateFavorites([]));
-    } else {
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      dispatch(updateFavorites(updatedFavorites));
-    }
-
-    setIsFavorite(false);
-  };
-
-  const handleClick = (auto) => {
-    return isFavorite ? removeFromFavorites(auto) : addToFavorites(auto);
-  };
-
-  return (
-    <CardLi key={auto.id}>
-      <div>
-        <AutoImg src={auto.gallery[0]} alt={auto.name} />
-      </div>
-      <div>
-        <AutoTitleDiv>
-          <AutoTitle>{auto.name}</AutoTitle>
-          <PriceDiv>
-            <AutoTitle>{`₴${auto.price}`}</AutoTitle>
-            <ButtonFavorite
-              type="button"
-              onClick={() => handleClick(auto)}
-            >
-              {/* {isFavorite ? <PressedHeartIcon /> : <HeartIcon />} */}
-            </ButtonFavorite>
-          </PriceDiv>
-        </AutoTitleDiv>
-        <AutoSubtitleDiv>
-          <SubtitleDiv>
-            {/* <StarIcon /> */}
-            <AutoSubtitleText>{`${auto.rating}(${auto.reviews.length} Reviews)`}</AutoSubtitleText>
-          </SubtitleDiv>
-          <SubtitleDiv>
-            {/* <LocationIcon /> */}
-            <AutoSubtitleText>{auto.location}</AutoSubtitleText>
-          </SubtitleDiv>
-        </AutoSubtitleDiv>
-        <AutoDescription>{auto.description}</AutoDescription>
-        {/* <CamperDetails auto={auto} /> */}
-        <ShowMoreButton type="button" onClick={openModal}>
-          Show more
-        </ShowMoreButton>
-      </div>
-          <Modal
-              key={auto.id}
-              isModalOpen={isModalOpen}
-              closeModal={closeModal}
-              auto={auto}
-          />
-    </CardLi>
-  );
 };

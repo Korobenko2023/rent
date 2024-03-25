@@ -1,7 +1,13 @@
 export const theme = {
-    colors: {
-        white: "#fafafa",
-        black: "#212121",
+  colors: {
+    white: "#F7F7F7",
+    greyWhite: "#F2F4F7",
+    black: "#101828",
+    orange: "#FFC531",
+    red: "#E44848",
+    grey: "#475467",  
+    transparent: "transparent",
+
         lightBlack: "#808080",
         violet: "#0900114a",
         Crimson: "#DC143C",
@@ -20,9 +26,10 @@ export const theme = {
         Beige: "#F5F5DC",
         MediumBlue: "#0000CD",
         Yellow: "#FFFF00",
-        Orange: "#FFA500",
+        
         mainBackground: ['linear-gradient(to top, #0f2027, #203a43, #2c5364)'],
         imageBackground: ['red', 'linear-gradient (90deg, #ff9966,#ff5e62'],
+        
     },
 
     radii: {
@@ -52,7 +59,9 @@ export const theme = {
     cubicBezier: '0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98)',
   },
 
-    spasing: (value) => `${value * 4}px`,
+  transition: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+
+  spasing: (value) => `${value * 4}px`,
 }
 
 

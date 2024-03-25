@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./auth/authSlice";
 import { autosReducer } from "./autos/autosSlice";
+import { favoritesReducer } from "./autos/favoritesSlice";
 import persistStore from "redux-persist/es/persistStore";
 
 import {
@@ -11,11 +11,19 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import persistReducer from "redux-persist/es/persistReducer";
+
+const persistConfig = {
+  key: 'autos',
+  storage,
+  whitelist: ['favorites'],
+};
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer,
-        autos: autosReducer,
+        autos: persistReducer(persistConfig, autosReducer),
+        favorites: favoritesReducer,
     },
     middleware: (getDefaultMiddleware) =>
          getDefaultMiddleware({
