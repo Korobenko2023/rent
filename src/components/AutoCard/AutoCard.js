@@ -28,10 +28,11 @@ export const AutoCard = ({ auto }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const favorites = useSelector(selectFavorites);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const formatPrice = price.toFixed(2);
 
     useEffect(() => {
-        setIsFavorite(favorites.some((f) => f._id === auto._id));
+        if (favorites.some((f) => f._id === auto._id)) {
+            setIsFavorite(true);
+        }        
     }, [favorites, auto._id]);
     
      const handleClick = () => {
@@ -52,10 +53,10 @@ export const AutoCard = ({ auto }) => {
                 <AutoTitleDiv>
                     <AutoTitle>{name}</AutoTitle>
                     <PriceDiv>
-                        <AutoTitle>€{formatPrice}</AutoTitle>
+                        <AutoTitle>€{price.toFixed(2)}</AutoTitle>
                         <ButtonFavorite type="button" onClick={handleClick} >  
                             <IconSvg>
-                                <use href={`${sprite}#iconHeart`} />                               
+                                <use href={`${sprite}${!isFavorite ? `#heart` : `#pressHeart`}`} />                               
                            </IconSvg>        
                         </ButtonFavorite>
                     </PriceDiv>

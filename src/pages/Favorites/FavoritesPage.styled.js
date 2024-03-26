@@ -4,7 +4,7 @@ export const FavoritesDiv = styled.div`
   display: flex;
   justify-content: center;
   padding-top: ${p => p.theme.spasing(4)};
-  background: ${p => p.theme.colors.greyWhite}; 
+  background: ${p => p.theme.colors.white}; 
 `;
 
 export const FavoritesTitle = styled.h2`

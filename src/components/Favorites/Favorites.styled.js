@@ -5,7 +5,7 @@ export const FavoritesDiv = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: ${p => p.theme.spasing(12)};
-  background: ${p => p.theme.colors.greyWhite}; 
+  background: ${p => p.theme.colors.white}; 
 `;
 
 export const FavoritesUl = styled.ul`
@@ -13,6 +13,6 @@ export const FavoritesUl = styled.ul`
   flex-direction: column;
   gap: ${p => p.theme.spasing(8)};
   margin-bottom: ${p => p.theme.spasing(12)};
-  padding-top: ${p => p.theme.spasing(5)};
+  padding-top: ${p => p.theme.spasing(5)}; 
 `;
 

@@ -8,11 +8,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:  'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;    
+  -moz-osx-font-smoothing: grayscale; 
   padding: ${p => p.theme.spasing(4)};
   color: ${p => p.theme.colors.black};
   letter-spacing: 0.02em;

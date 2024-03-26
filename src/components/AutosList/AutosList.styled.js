@@ -4,24 +4,24 @@ export const AutoListDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 50px;
+  padding-bottom:  ${p => p.theme.spasing(12)};
 `;
 
 export const AutoListUl = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  margin-bottom: 50px;
-  padding-top: 100px;
+  gap: ${p => p.theme.spasing(8)};
+  margin-bottom: ${p => p.theme.spasing(12)};
+  padding-top: ${p => p.theme.spasing(5)};
 `;
 
 export const Btn = styled.button`
   border: 1px solid;
-  border-color: ${(p) => p.theme.colors.iris};
+  border-color: ${(p) => p.theme.colors.greyWhite};
   background-color: ${(p) => p.theme.colors.white};
   border-radius: 200px;
-  padding: 16px 32px;
-  width: 145px;
+  padding: ${p => p.theme.spasing(4)} ${p => p.theme.spasing(10)};
+  width: 166px;
   height: 56px;
   font-weight: 500;
   font-size: 16px;
@@ -31,6 +31,6 @@ export const Btn = styled.button`
   transition: border-color 250ms ${(p) => p.theme.transition};
 
   &:hover {
-    border-color: ${(p) => p.theme.colors.Tomato};
+    border-color: ${(p) => p.theme.colors.red};
   }
 `;
