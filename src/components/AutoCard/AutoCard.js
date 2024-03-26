@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectFavorites } from 'redux/autos/selectors';
-import sprite from '../../public/sprite.svg';
+import sprite from '../../image/sprite.svg';
 import { Modal } from '../Modal/Modal';
 
 import {

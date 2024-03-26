@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
+import img from '../../image/camper.png';
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
@@ -16,7 +17,7 @@ body {
   letter-spacing: 0.02em;
   line-height: 1.3;
   font-size: 16px;
-  background: url('image/camper.png');
+  background-image:  url(${img});
   background-position: top;
   background-size: cover; 
   
