@@ -24,13 +24,13 @@ export default function CatalogPage() {
 
   return (
      <CatalogDiv>
-      <Wrapper>
-        {isLoading && !error && <Loader />}
-        {error && (toast.error('Oops! Something went wrong. Please try again later.'))}
+      <Wrapper>        
         {/* <SideBar /> */}
         {autos.length > 0 ? (            
             <AutosList autos={autos} buttonMore={handleLoadMore} />
-          ) : null}
+        ) : null}
+        {isLoading && !error && <Loader />}
+        {error && (toast.error('Oops! Something went wrong. Please try again later.'))}
         </Wrapper>
     </CatalogDiv>
     );

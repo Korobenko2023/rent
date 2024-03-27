@@ -26,7 +26,7 @@ const autosSlice = createSlice({
          .addCase(fetchAutos.fulfilled, (state, { payload }) => {
            state.isLoading = false;
            state.error = null;
-           if (payload.length === 0) {
+           if (payload.length < 4) {
              state.message = 'Oops! No more autos.';
            }
            const toCheck = state.items.map((item) => item._id);

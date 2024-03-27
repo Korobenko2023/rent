@@ -50,5 +50,15 @@ img {
 a {
    text-decoration: none; 
 }
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+
+  }
 `;
 

@@ -19,7 +19,6 @@ export const AutoImg = styled.img`
   border-radius: 10px;
   width: 290px;
   height: 310px;
-  object-fit: cover;
 `;
 
 export const AutoTitleDiv = styled.div`
@@ -55,7 +54,6 @@ export const ButtonFavorite = styled.button`
   justify-content: center;
   border: none;
   background: none;
-  cursor: pointer;
 `;
 
 export const AutoSubtitleDiv = styled.div`
