@@ -6,6 +6,6 @@ text-align: center;
 text-transform: uppercase;
 font-size: 50px;
 font-style: italic;
-color: ${p => p.theme.colors.Yellow};
+color: ${p => p.theme.colors.yellow};
 text-shadow: 6px 4px 2px black; 
 `;

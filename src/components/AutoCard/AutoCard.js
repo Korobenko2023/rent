@@ -8,6 +8,7 @@ import {
   AutoImg,
   AutoSubtitleDiv,
   AutoSubtitleText,
+  AutoSubtitleTextRev,
   AutoTitle,
   AutoTitleDiv,
   ButtonFavorite,
@@ -63,11 +64,11 @@ export const AutoCard = ({ auto }) => {
                 </AutoTitleDiv>
                 <AutoSubtitleDiv>
                     <SubtitleDiv>
-                        <AutoSubtitleText >
+                        <AutoSubtitleTextRev >
                             <IconStar>
                                 <use href={`${sprite}#star`} />
                             </IconStar>
-                            {`${rating}(${reviews.length} Reviews)`}</AutoSubtitleText>
+                            {`${rating} (${reviews.length} Reviews)`}</AutoSubtitleTextRev>
                     </SubtitleDiv>
                     <SubtitleDiv>
                         <AutoSubtitleText>

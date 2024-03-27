@@ -1,6 +1,6 @@
 :blue_car: **Rent-auto**
 ---
-Rent-auto is a responsive app designed for a company providing camper rental
+Rent-auto is an app designed for a company providing camper rental
 services in Ukraine. It allows users to browse available auto, and manage the
 list of favorites. The application is built using technologies such as React,
 Redux, Axios, Mockapi.

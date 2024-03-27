@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CardDiv = styled.div`
   display: flex;
   gap: ${(p) => p.theme.spasing(6)};
-  border: 1px solid ${(p) => p.theme.colors.greyWhite};
+  border: 1px solid ${(p) => p.theme.colors.features};
   border-radius: 20px;
   padding: ${(p) => p.theme.spasing(6)};
   width: 888px;
@@ -32,16 +32,12 @@ export const AutoTitle = styled.h2`
   font-weight: 600;
   font-size: 24px;
   line-height: 1.25;
-  color: ${(p) => p.theme.colors.grey};
   max-width: 340px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 export const PriceDiv = styled.div`
   display: flex;
-  gap: ${(p) => p.theme.spasing(8)};
+  gap: ${(p) => p.theme.spasing(2)};
 `;
 
 export const ButtonFavorite = styled.button`
@@ -73,7 +69,7 @@ export const SubtitleDiv = styled.div`
 export const IconSvg = styled.svg`
   width: 24px;
   height: 24px;  
-  stroke: ${(p) => (p.theme.colors.grey)};
+  stroke: ${(p) => (p.theme.colors.features)};
   fill: ${(p) => (p.theme.colors.transparent)};
   transition:
     fill 250ms ${(p) => p.theme.transition},
@@ -81,32 +77,39 @@ export const IconSvg = styled.svg`
 
   &:hover,
   &:focus {
-    fill: ${(p) => p.theme.colors.red};
-    stroke: ${(p) => p.theme.colors.red};
+    fill: ${(p) => p.theme.colors.button};
+    stroke: ${(p) => p.theme.colors.button};
   }
 `;
 
 export const IconStar = styled.svg`
-    fill: ${(p) => p.theme.colors.Yellow};
+    fill: ${(p) => p.theme.colors.rating};
     margin-right: ${(p) => p.theme.spasing(1)};
     width: 16px;
     height: 16px;
 `;
 
 export const IconMap = styled.svg`
-    stroke: ${(p) => p.theme.colors.grey};
+    stroke: ${(p) => p.theme.colors.main};
     fill: ${(p) => (p.theme.colors.transparent)};
     margin-right: ${(p) => p.theme.spasing(1)};
     width: 16px;
     height: 16px;
 `;
 
-export const AutoSubtitleText = styled.p`
-  display: inline-block;
+export const AutoSubtitleTextRev = styled.p`
+  display: flex;
+  gap: ${(p) => p.theme.spasing(1)};
+  align-items: center;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: ${(p) => p.theme.colors.grey};
+  text-decoration: underline;
+`;
+
+export const AutoSubtitleText = styled.p`
+  display: flex;
+  gap: ${(p) => p.theme.spasing(1)};
+  align-items: center;
+  font-weight: 400;
 `;
 
 export const AutoDescription = styled.p`
@@ -118,7 +121,7 @@ export const AutoDescription = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: ${(p) => p.theme.colors.grey};
+  color: ${(p) => p.theme.colors.text};
 `;
 
 export const ShowMoreButton = styled.button`
@@ -127,7 +130,7 @@ export const ShowMoreButton = styled.button`
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: ${(p) => p.theme.colors.white};
-  background-color: ${(p) => p.theme.colors.red};
+  background-color: ${(p) => p.theme.colors.button};
   border: none;
   border-radius: 200px;
   padding: ${p => p.theme.spasing(4)} ${p => p.theme.spasing(10)};
@@ -142,7 +145,7 @@ export const ShowMoreButton = styled.button`
 `;
 
 export const Description = styled.p`
-  color: ${(p) => p.theme.colors.grey};
+  color: ${(p) => p.theme.colors.text};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

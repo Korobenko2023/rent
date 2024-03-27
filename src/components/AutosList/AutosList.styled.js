@@ -17,7 +17,7 @@ export const AutoListUl = styled.ul`
 
 export const Btn = styled.button`
   border: 1px solid;
-  border-color: ${(p) => p.theme.colors.greyWhite};
+  border-color: ${(p) => p.theme.colors.features};
   background-color: ${(p) => p.theme.colors.white};
   border-radius: 200px;
   padding: ${p => p.theme.spasing(4)} ${p => p.theme.spasing(10)};
@@ -27,10 +27,10 @@ export const Btn = styled.button`
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  color: ${(p) => p.theme.colors.black};
+  color: ${(p) => p.theme.colors.main};
   transition: border-color 250ms ${(p) => p.theme.transition};
 
   &:hover {
-    border-color: ${(p) => p.theme.colors.red};
+    border-color: ${(p) => p.theme.colors.button};
   }
 `;

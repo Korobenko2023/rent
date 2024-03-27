@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
-import img from '../../image/camper.png';
+import img from '../../image/camper-min.jpg';
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
@@ -13,9 +13,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
   padding: ${p => p.theme.spasing(4)};
-  color: ${p => p.theme.colors.black};
+  color: ${p => p.theme.colors.main};
   letter-spacing: 0.02em;
-  line-height: 1.3;
+  line-height: 1.5;
   font-size: 16px;
   background-image:  url(${img});
   background-position: top;
@@ -58,7 +58,18 @@ input, textarea, select, button {
 button {
     cursor: pointer;
     border: none;
+}
 
-  }
+.disable-scroll {
+        overflow: hidden;
+}
+
+.container {
+  width: 1440px;
+  padding-left: 64px;    
+  padding-right: 64px;    
+  margin: 0 auto; 
+}
+
 `;
 
