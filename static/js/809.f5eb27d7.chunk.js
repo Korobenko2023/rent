@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrent=self.webpackChunkrent||[]).push([[809],{809:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var r,s=t(168);const a=t(867).ZP.h1(r||(r=(0,s.Z)(["\nmargin-top: ",";\ntext-align: center;\ntext-transform: uppercase;\nfont-size: 50px;\nfont-style: italic;\ncolor: ",";\ntext-shadow: 6px 4px 2px black; \n"])),(e=>e.theme.spasing(6)),(e=>e.theme.colors.yellow));var o=t(184);function c(){return(0,o.jsx)("div",{children:(0,o.jsx)(a,{children:"Our campers to rent for your amazing trip!"})})}}}]);
+//# sourceMappingURL=809.f5eb27d7.chunk.js.map

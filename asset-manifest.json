@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/rent/static/css/main.10a9149c.css",
-    "main.js": "/rent/static/js/main.5c92a9b2.js",
-    "static/js/809.77a39cd9.chunk.js": "/rent/static/js/809.77a39cd9.chunk.js",
-    "static/js/885.a45700cf.chunk.js": "/rent/static/js/885.a45700cf.chunk.js",
-    "static/js/627.f7f7edce.chunk.js": "/rent/static/js/627.f7f7edce.chunk.js",
-    "static/media/camper.png": "/rent/static/media/camper.e0e494a62e55425698ff.png",
+    "main.js": "/rent/static/js/main.572f68eb.js",
+    "static/js/809.f5eb27d7.chunk.js": "/rent/static/js/809.f5eb27d7.chunk.js",
+    "static/js/885.eeda5c6c.chunk.js": "/rent/static/js/885.eeda5c6c.chunk.js",
+    "static/js/627.8b41ca56.chunk.js": "/rent/static/js/627.8b41ca56.chunk.js",
+    "static/media/camper-min.jpg": "/rent/static/media/camper-min.ef9c10e9e23956b9c70e.jpg",
     "static/media/sprite.svg": "/rent/static/media/sprite.5c7a7f571120e0b98362b2dbf289192f.svg",
     "index.html": "/rent/index.html",
     "main.10a9149c.css.map": "/rent/static/css/main.10a9149c.css.map",
-    "main.5c92a9b2.js.map": "/rent/static/js/main.5c92a9b2.js.map",
-    "809.77a39cd9.chunk.js.map": "/rent/static/js/809.77a39cd9.chunk.js.map",
-    "885.a45700cf.chunk.js.map": "/rent/static/js/885.a45700cf.chunk.js.map",
-    "627.f7f7edce.chunk.js.map": "/rent/static/js/627.f7f7edce.chunk.js.map"
+    "main.572f68eb.js.map": "/rent/static/js/main.572f68eb.js.map",
+    "809.f5eb27d7.chunk.js.map": "/rent/static/js/809.f5eb27d7.chunk.js.map",
+    "885.eeda5c6c.chunk.js.map": "/rent/static/js/885.eeda5c6c.chunk.js.map",
+    "627.8b41ca56.chunk.js.map": "/rent/static/js/627.8b41ca56.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.10a9149c.css",
-    "static/js/main.5c92a9b2.js"
+    "static/js/main.572f68eb.js"
   ]
 }
