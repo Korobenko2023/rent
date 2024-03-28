@@ -17,7 +17,7 @@ export const AutoListUl = styled.ul`
 
 export const Btn = styled.button`
   border: 1px solid;
-  border-color: ${(p) => p.theme.colors.features};
+  border-color: rgba(16, 24, 40, 0.2);
   background-color: ${(p) => p.theme.colors.white};
   border-radius: 200px;
   padding: ${p => p.theme.spasing(4)} ${p => p.theme.spasing(10)};

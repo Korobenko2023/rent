@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CardDiv = styled.div`
   display: flex;
   gap: ${(p) => p.theme.spasing(6)};
-  border: 1px solid ${(p) => p.theme.colors.features};
+  border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 20px;
   padding: ${(p) => p.theme.spasing(6)};
   width: 888px;
@@ -16,7 +16,7 @@ export const CardDiv = styled.div`
 `;
 
 export const AutoImg = styled.img`
-  border-radius: 10px;
+  border-radius: ${(p) => (p.theme.radii.md)};
   width: 290px;
   height: 310px;
 `;
@@ -69,7 +69,7 @@ export const SubtitleDiv = styled.div`
 export const IconSvg = styled.svg`
   width: 24px;
   height: 24px;  
-  stroke: ${(p) => (p.theme.colors.features)};
+  stroke: ${(p) => p.theme.colors.main};
   fill: ${(p) => (p.theme.colors.transparent)};
   transition:
     fill 250ms ${(p) => p.theme.transition},
@@ -128,7 +128,6 @@ export const ShowMoreButton = styled.button`
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  letter-spacing: -0.01em;
   color: ${(p) => p.theme.colors.white};
   background-color: ${(p) => p.theme.colors.button};
   border: none;
