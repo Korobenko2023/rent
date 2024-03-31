@@ -11,17 +11,17 @@ export default function CatalogPage() {
   const dispatch = useDispatch();  
   const autos = useSelector(selectAutos);
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const error = useSelector(selectError);  
   const [page, setPage] = useState(1);
  
   useEffect(() => {
     dispatch(fetchAutos(page));
-  }, [dispatch, page]);
+  }, [dispatch, page]);  
 
   const handleLoadMore = () => {
-    setPage((prevPage) => (prevPage += 1));
+    setPage(prevPage => prevPage + 1);
   };
-
+  
   return (
      <CatalogDiv>
       <Wrapper>     

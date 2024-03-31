@@ -8,7 +8,11 @@ export default function FavoritesPage() {
 
   return (
       <FavoritesDiv> 
-          {favorites.length > 0 && <Favorites favorites={favorites} />}
+          {favorites.length > 0 ? (
+              <Favorites favorites={favorites} />
+          ) : (
+              <h2>You have no favorites campers </h2>
+          )}
       </FavoritesDiv>
     );
 }
